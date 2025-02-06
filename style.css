@@ -245,3 +245,352 @@ nav .nav_links .link a {
   color: rgb(228, 137, 117);
   text-align: center;
 }
+.about-me {
+  background-color: var(--background-color);
+  padding: 50px 15px;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-image {
+  flex: 1;
+  max-width: 300px; /* Adjust this width as needed */
+  margin-right: 20px; /* Space between image and text */
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 8px; /* Rounded corners for the image */
+}
+
+.about-text {
+  flex: 2; /* Adjust this ratio as needed */
+  color: var(--text-color);
+}
+
+.about-text h3 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.about-text p {
+  margin-bottom: 15px;
+}
+
+.social-liter {
+  display: flex;
+  justify-content: start; /* Aligns icons to the left */
+}
+
+.social-liter a {
+  margin-right: 10px; /* Space between icons */
+  color: var(--text-color);
+}
+.about-me {
+    background-color: var(--background-color);
+    padding: 50px 15px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.about-image {
+    flex: 1;
+    max-width: 300px; /* Adjust this width as needed */
+    margin-right: 20px; /* Space between image and text */
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 8px; /* Rounded corners for the image */
+}
+
+.about-text {
+    flex: 2; /* Adjust this ratio as needed */
+    color: var(--text-color);
+}
+
+.about-text h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+}
+
+.social-liter {
+    display: flex;
+    justify-content: start; /* Aligns icons to the left */
+}
+
+.social-liter a {
+    margin-right: 10px; /* Space between icons */
+    color: var(--text-color);
+}
+.home {
+    min-height: 100vh;
+    background: linear-gradient(to right, #181818, #606060); /* Dark gradient background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space between text and image */
+    width: 100%;
+    padding: 0 15px;
+}
+
+.block {
+    flex: 1; /* Allow block to take available space */
+    color: var(--text-color);
+    text-align: left; /* Align text to the left */
+}
+
+.block h6 {
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.block h1 {
+    font-size: 48px; /* Adjust font size for emphasis */
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+.block h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 20px;
+}
+
+.cv-btn {
+    margin-top: 20px;
+}
+
+.cv-btn a {
+    color: var(--text-color);
+    font-size: 14px;
+    text-decoration: none;
+    border: 2px solid var(--text-color);
+    border-radius: 5px;
+    padding: 12px 25px;
+    font-weight: 600;
+    transition: all 0.5s ease;
+}
+
+.cv-btn a:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+.profile-image {
+    flex: 1; /* Allow image to take available space */
+    max-width: 300px; /* Adjust image size */
+    margin-left: 20px; /* Space between text and image */
+}
+
+.profile-image img {
+    width: 100%;
+    border-radius: 50%; /* Circular profile image */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+.social-media-sidebar {
+    position: fixed; /* Keep it fixed on the side */
+    top: 50%; /* Center vertically */
+    right: 20px; /* Distance from the right */
+    transform: translateY(-50%); /* Center the sidebar */
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    border-radius: 10px; /* Rounded corners */
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
+}
+
+.social-media-item {
+    margin-bottom: 10px; /* Space between items */
+}
+
+.social-media-link {
+    text-decoration: none;
+    color: var(--text-color); /* Use your text color variable */
+    font-size: 18px; /* Adjust font size */
+    display: flex; /* Flexbox for icons and text */
+    align-items: center; /* Center items vertically */
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+    border-radius: 5px; /* Round the link area */
+}
+
+.social-media-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+}
+
+.social-media-link i {
+    margin-right: 8px; /* Space between icon and text */
+    font-size: 20px; /* Adjust icon size */
+}
+
+.contact-me {
+    background-color: var(--background-color);
+    padding: 50px 15px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.contact-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contact-details {
+    flex: 1;
+    max-width: 400px;
+    margin-right: 20px;
+}
+
+.contact-details h3 {
+    font-size: 24px;
+}
+
+.contact-details p {
+    margin-bottom: 15px;
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+}
+
+.social-link {
+    margin-bottom: 10px; /* Space between links */
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.contact-form {
+    flex: 2;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin-bottom: 5px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: darken(var(--accent-color), 10%); /* Darker on hover */
+}
+
+.projects {
+    background-color: var(--background-color);
+    padding: 50px 15px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Space between project items */
+}
+
+.project-item {
+    background-color: #fff; /* White background for project items */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    overflow: hidden; /* Clip overflow for rounded corners */
+    transition: transform 0.3s; /* Smooth hover effect */
+}
+
+.project-item:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+}
+
+.project-item img {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.project-item h3 {
+    font-size: 20px; /* Title font size */
+    margin: 15px; /* Margin around title */
+}
+
+.project-item p {
+    margin: 0 15px 15px; /* Margin for description */
+    color: #555; /* Grey color for text */
+}
+
+.project-link {
+    display: block; /* Make the link a block element */
+    text-align: center; /* Center the text */
+    padding: 10px;
+    margin: 0 15px 15px; /* Margin at the bottom */
+    background-color: var(--accent-color); /* Button color */
+    color: white; /* Text color */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.project-link:hover {
+    background-color: darken(var(--accent-color), 10%); /* Darker on hover */
+}
+
+/* Adjust icon styles as needed */
+/* Adjust icon styles as needed */
