@@ -43,37 +43,6 @@ body {
   margin-bottom: 40px;
 }
 
-.section-title h1 {
-  display: inline-block;
-  font-size: 35px;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--text-color);
-  margin: 0 0 5px;
-  position: relative;
-}
-
-.section-title h1:before {
-  content: "";
-  left: 0;
-  position: absolute;
-  height: 2px;
-  right: 32%;
-  background-color: var(--accent-color);
-  bottom: 0;
-}
-
-.text-upper {
-  text-transform: uppercase;
-}
-
-.align-item-center {
-  width: 65%;
-  align-items: center !important;
-  position: relative;
-  right: -380px;
-}
-
 /* Navbar Styles */
 header {
   position: sticky;
@@ -532,65 +501,266 @@ nav .nav_links .link a {
 .contact-form button:hover {
     background-color: darken(var(--accent-color), 10%); /* Darker on hover */
 }
+:root {
+    --slider-height: 400px;
+    --card-width: calc(100% / 3);
+    --card-gap: 20px;
+}
 
 .projects {
-    background-color: var(--background-color);
-    padding: 50px 15px;
+    position: relative;
+    overflow: hidden;
+    padding: 20px;
 }
 
-.section-title {
+.slider-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: var(--card-gap);
+}
+
+.card {
+    width: calc(var(--card-width) - var(--card-gap));
+    height: var(--slider-height);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    overflow: hidden;
     text-align: center;
-    margin-bottom: 40px;
+    padding: 15px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
 }
 
-.projects-grid {
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Card Image */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Card Title */
+.card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Card Description */
+.card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Button */
+.card .btn {
+    display: inline-block;
+    background: #007BFF;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background 0.3s ease-in-out;
+}
+
+.card .btn:hover {
+    background: #0056b3;
+}
+
+
+
+/* Keyframes for infinite scrolling */
+@keyframes infinite-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-200%); /* Moves left infinitely */
+    }
+}
+
+
+.skills {
+    padding: 50px 20px;
+    text-align: center;
+     background: linear-gradient(to right, #181818, #606060); /* Dark gradient background */
+
+}
+
+.skills .section-title h1 {
+    font-size: 2rem;
+    color:  var(--text-color);
+
+}
+
+.skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Responsive grid */
-    gap: 20px; /* Space between project items */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 800px;
+    margin: auto;
 }
 
-.project-item {
-    background-color: #fff; /* White background for project items */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-    overflow: hidden; /* Clip overflow for rounded corners */
-    transition: transform 0.3s; /* Smooth hover effect */
+.skill {
+
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.project-item:hover {
-    transform: translateY(-5px); /* Slight lift on hover */
+.skill:hover {
+    transform: scale(1.05);
 }
 
-.project-item img {
-    width: 100%; /* Full width */
-    height: auto; /* Maintain aspect ratio */
+/* Skill Icons */
+.skill i {
+    font-size: 3rem;
+    color: #007BFF;
+    margin-bottom: 10px;
 }
 
-.project-item h3 {
-    font-size: 20px; /* Title font size */
-    margin: 15px; /* Margin around title */
+/* Skill Titles */
+.skill h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 10px;
 }
 
-.project-item p {
-    margin: 0 15px 15px; /* Margin for description */
-    color: #555; /* Grey color for text */
+/* Skill Level Badges */
+.badge {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 15px;
+    color: white;
+    text-transform: uppercase;
 }
 
-.project-link {
-    display: block; /* Make the link a block element */
-    text-align: center; /* Center the text */
-    padding: 10px;
-    margin: 0 15px 15px; /* Margin at the bottom */
-    background-color: var(--accent-color); /* Button color */
-    color: white; /* Text color */
-    border-radius: 5px; /* Rounded corners */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s; /* Smooth transition */
+/* Badge Colors */
+.expert {
+    background: #28a745; /* Green */
 }
 
-.project-link:hover {
-    background-color: darken(var(--accent-color), 10%); /* Darker on hover */
+.advanced {
+    background: #007bff; /* Blue */
 }
 
-/* Adjust icon styles as needed */
-/* Adjust icon styles as needed */
+.intermediate {
+    background: #fd7e14; /* Orange */
+}
+
+.beginner {
+    background: #dc3545; /* Red */
+}
+.skills-tools {
+    padding: 50px 20px;
+    text-align: center;
+     background: linear-gradient(to right, #181818, #606060);
+}
+
+.skills-tools .section-title h1 {
+    font-size: 2rem;
+    color: #333;
+}
+
+.skills-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.category {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.category:hover {
+    transform: scale(1.05);
+}
+
+/* Category Titles */
+.category h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Items (Tools & Skills) */
+.items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.item {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+}
+
+.item i {
+    font-size: 1.2rem;
+}
+
+.item:hover {
+    background: #0056b3;
+}
+
+/* Initial fade-in state */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Active state when in view */
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reset animation when section leaves the viewport */
+.fade-in.reset {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: none; /* Prevents flickering when out of view */
+}
