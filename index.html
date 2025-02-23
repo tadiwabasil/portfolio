@@ -234,9 +234,12 @@
                 </div>
                 <div class="card">
                     <img src="church.jpg" alt="Project 3">
+                    <br>
                     <h3>CMS</h3>
                     <p>A platform designed to help churches manage their administrative tasks,
-                        including membership databases, event scheduling, and reporting.</p>
+                        including membership databases, event scheduling, and reporting.
+                        <br>
+                    </p>
                     <a href="#" class="btn">View Project Details</a>
                 </div>
                 <div class="card">
@@ -314,56 +317,73 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const slider = document.querySelector('.slider');
-    let cards = document.querySelectorAll('.card');
-    const cardWidth = 100 / 3; // Each card takes up 1/3 of the slider
-    let currentIndex = cards.length;
-
-    // Clone first and last three cards to create a seamless loop
-    for (let i = 0; i < 3; i++) {
+    document.addEventListener("DOMContentLoaded", () => {
+      const slider = document.querySelector('.slider');
+      let cards = document.querySelectorAll('.card');
+      let cardWidth; // Will be set dynamically based on screen size
+      let currentIndex = 0;
+    
+      // Function to calculate card width based on screen size
+      function calculateCardWidth() {
+        if (window.innerWidth <= 768) {
+          cardWidth = 100; // 1 card per row for mobile
+        } else if (window.innerWidth <= 992) {
+          cardWidth = 100 / 2; // 2 cards per row for tablets
+        } else {
+          cardWidth = 100 / 3; // 3 cards per row for desktop
+        }
+      }
+    
+      // Initialize card width
+      calculateCardWidth();
+    
+      // Clone first and last cards to create a seamless loop
+      for (let i = 0; i < 3; i++) {
         let firstClone = cards[i].cloneNode(true);
         let lastClone = cards[cards.length - 1 - i].cloneNode(true);
         slider.appendChild(firstClone);
         slider.insertBefore(lastClone, slider.firstChild);
-    }
-
-    // Update card list after cloning
-    cards = document.querySelectorAll('.card');
-    const totalCards = cards.length;
-
-    // Set initial position
-    slider.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
-
-    function moveSlider() {
+      }
+    
+      // Update card list after cloning
+      cards = document.querySelectorAll('.card');
+      const totalCards = cards.length;
+    
+      // Set initial position
+      slider.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
+    
+      function moveSlider() {
         currentIndex++;
         slider.style.transition = "transform 0.5s ease-in-out";
         slider.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
-
+    
         // If at the last clone, reset without animation
         if (currentIndex === totalCards - 3) {
-            setTimeout(() => {
-                slider.style.transition = "none";
-                currentIndex = 3;
-                slider.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
-            }, 500);
+          setTimeout(() => {
+            slider.style.transition = "none";
+            currentIndex = 3;
+            slider.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
+          }, 500);
         }
-    }
-
-    // Start automatic sliding
-    let interval = setInterval(moveSlider, 2000);
-
-    // Pause on hover
-    slider.addEventListener("mouseenter", () => clearInterval(interval));
-    slider.addEventListener("mouseleave", () => interval = setInterval(moveSlider, 2000));
-});
-
-
-
-</script>
-
+      }
+    
+      // Start automatic sliding
+      let interval = setInterval(moveSlider, 2000);
+    
+      // Pause on hover
+      slider.addEventListener("mouseenter", () => clearInterval(interval));
+      slider.addEventListener("mouseleave", () => interval = setInterval(moveSlider, 2000));
+    
+      // Recalculate card width on window resize
+      window.addEventListener("resize", () => {
+        calculateCardWidth();
+        slider.style.transition = "none";
+        slider.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
+      });
+    });
+    </script>
+    
 
 </body>
 </html>
