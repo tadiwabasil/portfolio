@@ -4,114 +4,153 @@ const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav_links');
 const scrollProgress = document.querySelector('.scroll-progress');
 const contactForm = document.getElementById('contactForm');
-const slider = document.querySelector('.slider');
-const prevBtn = document.getElementById('prev-btn');
-const nextBtn = document.getElementById('next-btn');
-const cards = document.querySelectorAll('.card');
+const backToTop = document.querySelector('.back-to-top');
+const themeToggle = document.querySelector('.theme-toggle');
+const preloader = document.querySelector('.preloader');
+
+// Typed.js effect for hero section
+const typedText = document.getElementById('typed-text');
+const roles = [
+    "Data Analyst",
+    "Data Scientist",
+    "Machine Learning Engineer",
+    "Business Intelligence Developer"
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let isEnd = false;
+
+function typeEffect() {
+    const currentRole = roles[roleIndex];
+
+    if (isDeleting) {
+        typedText.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typedText.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+    }
+
+    if (!isDeleting && charIndex === currentRole.length) {
+        isEnd = true;
+        isDeleting = true;
+        setTimeout(typeEffect, 1500);
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        setTimeout(typeEffect, 500);
+    } else {
+        let typeSpeed = isDeleting ? 50 : 100;
+        typeSpeed = isEnd ? 2000 : typeSpeed;
+        setTimeout(typeEffect, typeSpeed);
+    }
+}
+
+// Theme Toggle
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateThemeIcon(newTheme);
+}
+
+function updateThemeIcon(theme) {
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+}
 
 // Header scroll effect
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        header.classList.add('scrolled');
+function handleScroll() {
+    const scrollY = window.scrollY;
+
+    // Header background
+    if (scrollY > 50) {
+        header.style.padding = '15px 0';
+        header.style.backdropFilter = 'blur(15px)';
     } else {
-        header.classList.remove('scrolled');
+        header.style.padding = '20px 0';
+        header.style.backdropFilter = 'blur(10px)';
     }
 
     // Scroll progress
     const winHeight = window.innerHeight;
     const docHeight = document.documentElement.scrollHeight;
-    const scrollTop = window.pageYOffset;
-    const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+    const scrollPercent = (scrollY / (docHeight - winHeight)) * 100;
     scrollProgress.style.width = scrollPercent + '%';
-});
 
-// Mobile menu toggle
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.innerHTML = navLinks.classList.contains('active')
-        ? '<i class="fas fa-times"></i>'
-        : '<i class="fas fa-bars"></i>';
-});
-
-// Close mobile menu when clicking on a link
-document.querySelectorAll('.nav_links .link a').forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-    });
-});
-
-// Project slider
-let currentSlide = 0;
-const cardWidth = cards[0].offsetWidth + 30; // card width + gap
-
-function updateSlider() {
-    slider.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
+    // Back to top button
+    if (scrollY > 300) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
 }
 
-nextBtn.addEventListener('click', () => {
-    if (currentSlide < cards.length - 3) {
-        currentSlide++;
-    } else {
-        currentSlide = 0;
-    }
-    updateSlider();
-});
+// Mobile menu toggle
+function toggleMenu() {
+    navLinks.classList.toggle('active');
+    const icon = menuToggle.querySelector('i');
+    icon.className = navLinks.classList.contains('active')
+        ? 'fas fa-times'
+        : 'fas fa-bars';
+}
 
-prevBtn.addEventListener('click', () => {
-    if (currentSlide > 0) {
-        currentSlide--;
-    } else {
-        currentSlide = cards.length - 3;
-    }
-    updateSlider();
-});
-
-// Auto-slide projects
-let autoSlideInterval = setInterval(() => {
-    if (currentSlide < cards.length - 3) {
-        currentSlide++;
-    } else {
-        currentSlide = 0;
-    }
-    updateSlider();
-}, 4000);
-
-// Pause auto-slide on hover
-slider.addEventListener('mouseenter', () => {
-    clearInterval(autoSlideInterval);
-});
-
-slider.addEventListener('mouseleave', () => {
-    autoSlideInterval = setInterval(() => {
-        if (currentSlide < cards.length - 3) {
-            currentSlide++;
-        } else {
-            currentSlide = 0;
-        }
-        updateSlider();
-    }, 4000);
-});
+// Close mobile menu when clicking on a link
+function closeMenu() {
+    navLinks.classList.remove('active');
+    menuToggle.querySelector('i').className = 'fas fa-bars';
+}
 
 // Contact form submission
-contactForm.addEventListener('submit', (e) => {
+function handleFormSubmit(e) {
     e.preventDefault();
 
-    // Get form values
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const subject = document.getElementById('subject').value;
     const message = document.getElementById('message').value;
 
-    // Simple validation
     if (name && email && subject && message) {
         // In a real application, you would send this data to a server
-        alert(`Thank you, ${name}! Your message has been sent. I'll get back to you soon.`);
+        showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
         contactForm.reset();
     } else {
-        alert('Please fill in all fields.');
+        showNotification('Please fill in all fields.', 'error');
     }
-});
+}
+
+// Notification system
+function showNotification(message, type) {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        <span>${message}</span>
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.remove();
+        }, 300);
+    }, 3000);
+}
 
 // Intersection Observer for animations
 const observerOptions = {
@@ -124,114 +163,157 @@ const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+
+            // Animate skill bars
+            if (entry.target.classList.contains('skill-level')) {
+                const width = entry.target.style.width;
+                entry.target.style.width = '0';
+                setTimeout(() => {
+                    entry.target.style.width = width;
+                }, 300);
+            }
         }
     });
 }, observerOptions);
 
-// Observe elements for animation
-document.querySelectorAll('.skill, .category, .card, .about-image, .about-text, .contact-details, .contact-form, .timeline-item').forEach(el => {
-    observer.observe(el);
-});
-
-// Animate about section paragraphs with delay
-document.querySelectorAll('.about-text p').forEach((p, index) => {
-    p.style.animationDelay = `${0.3 + index * 0.2}s`;
-    observer.observe(p);
-});
-
-// Animate social liter links with delay
-document.querySelectorAll('.social-liter a').forEach((link, index) => {
-    link.style.animationDelay = `${1.2 + index * 0.1}s`;
-    observer.observe(link);
-});
-
-// Animate contact details paragraphs with delay
-document.querySelectorAll('.contact-details p').forEach((p, index) => {
-    p.style.animationDelay = `${0.3 + index * 0.2}s`;
-    observer.observe(p);
-});
-
-// Animate contact items with delay
-document.querySelectorAll('.contact-item').forEach((item, index) => {
-    item.style.animationDelay = `${0.8 + index * 0.1}s`;
-    observer.observe(item);
-});
-
-// Animate social links with delay
-document.querySelectorAll('.social-link').forEach((link, index) => {
-    link.style.animationDelay = `${1.2 + index * 0.1}s`;
-    observer.observe(link);
-});
-
-// Create floating particles for hero section
-function createParticles() {
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 15;
-
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-
-        // Random size and position
-        const size = Math.random() * 20 + 5;
-        const left = Math.random() * 100;
-        const animationDuration = Math.random() * 20 + 10;
-        const animationDelay = Math.random() * 5;
-
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${left}%`;
-        particle.style.animationDuration = `${animationDuration}s`;
-        particle.style.animationDelay = `${animationDelay}s`;
-
-        particlesContainer.appendChild(particle);
-    }
+// Preloader
+function hidePreloader() {
+    setTimeout(() => {
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+            typeEffect(); // Start typed effect after loading
+        }, 500);
+    }, 1500);
 }
 
-// Initialize particles
-createParticles();
+// Initialize everything
+function init() {
+    // Preloader
+    hidePreloader();
 
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+    // Theme
+    initTheme();
+    themeToggle.addEventListener('click', toggleTheme);
 
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
+    // Scroll events
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
 
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop - 80,
-                behavior: 'smooth'
-            });
-        }
+    // Mobile menu
+    menuToggle.addEventListener('click', toggleMenu);
+    document.querySelectorAll('.nav_links .link a').forEach(link => {
+        link.addEventListener('click', closeMenu);
     });
-});
 
-// Add loading animation
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
+    // Contact form
+    contactForm.addEventListener('submit', handleFormSubmit);
 
-// Add keyboard navigation for project slider
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') {
-        if (currentSlide > 0) {
-            currentSlide--;
-        } else {
-            currentSlide = cards.length - 3;
-        }
-        updateSlider();
-    } else if (e.key === 'ArrowRight') {
-        if (currentSlide < cards.length - 3) {
-            currentSlide++;
-        } else {
-            currentSlide = 0;
-        }
-        updateSlider();
+    // Back to top
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Observe elements for animation
+    document.querySelectorAll('.fade-in, .skill-level, .category-card, .project-card, .timeline-content').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            e.preventDefault();
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Data visualization canvas (simple example)
+    initDataVisualization();
+}
+
+// Simple data visualization
+function initDataVisualization() {
+    const canvas = document.getElementById('dataCanvas');
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const points = [];
+    const pointCount = 50;
+
+    // Create points
+    for (let i = 0; i < pointCount; i++) {
+        points.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            radius: Math.random() * 2 + 1
+        });
     }
-});
 
-// Initialize slider on load
-window.addEventListener('load', updateSlider);
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Draw connections
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1;
+
+        for (let i = 0; i < points.length; i++) {
+            for (let j = i + 1; j < points.length; j++) {
+                const dx = points[i].x - points[j].x;
+                const dy = points[i].y - points[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                if (distance < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(points[i].x, points[i].y);
+                    ctx.lineTo(points[j].x, points[j].y);
+                    ctx.stroke();
+                }
+            }
+        }
+
+        // Update and draw points
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+
+        points.forEach(point => {
+            // Update position
+            point.x += point.vx;
+            point.y += point.vy;
+
+            // Bounce off edges
+            if (point.x < 0 || point.x > canvas.width) point.vx *= -1;
+            if (point.y < 0 || point.y > canvas.height) point.vy *= -1;
+
+            // Draw point
+            ctx.beginPath();
+            ctx.arc(point.x, point.y, point.radius, 0, Math.PI * 2);
+            ctx.fill();
+        });
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Resize handler
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+}
+
+// Initialize on load
+window.addEventListener('load', init);
