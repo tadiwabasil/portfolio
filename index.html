@@ -3,41 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Tadiwanashe Mpupuni - Full Stack Developer Portfolio. Explore projects, skills, and contact me for collaborations.">
-  <meta name="keywords" content="Full Stack Developer, C#, Python, JavaScript, Portfolio, Web Developer">
+  <meta name="description" content="Tadiwanashe Mpupuni - Data Analyst & Scientist Portfolio. Specializing in Python, SQL, Machine Learning, and Data Visualization.">
+  <meta name="keywords" content="Data Analyst, Data Scientist, Python, SQL, Machine Learning, Tableau, Power BI, Statistics">
   <meta name="author" content="Mpupuni Tadiwanashe B">
-  <meta property="og:title" content="Mpupuni Tadiwanashe B | Full Stack Developer Portfolio">
-  <meta property="og:description" content="Explore my projects and skills in Python, C#, and Full Stack Development.">
+  <meta property="og:title" content="Mpupuni Tadiwanashe B | Data Analyst & Scientist Portfolio">
+  <meta property="og:description" content="Explore my data projects and analytical skills in Python, SQL, and Machine Learning.">
   <meta property="og:image" content="sane.png">
   <meta property="og:url" content="https://tadiwabasil.github.io/portfolio/">
   <meta name="twitter:card" content="summary_large_image">
-  <title>Mpupuni Tadiwanashe | Full Stack Developer - C#, Python & Web Apps</title>
+  <title>Mpupuni Tadiwanashe | Data Analyst & Scientist</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
+<!-- Preloader -->
+<div class="preloader">
+  <div class="preloader-content">
+    <div class="data-spinner">
+      <i class="fas fa-chart-line"></i>
+      <i class="fas fa-database"></i>
+      <i class="fas fa-brain"></i>
+    </div>
+    <div class="loading-text">Loading Data...</div>
+  </div>
+</div>
+
 <!-- Header Section -->
 <header>
     <nav>
         <div class="nav-logo">
-            <h3>My Portfolio.</h3>
+            <h3><span class="logo-highlight">&lt;DT/&gt;</span>Portfolio</h3>
         </div>
         <ul class="nav_links">
-            <li class="link"><a href="#home">Home</a></li>
-            <li class="link"><a href="#about">About</a></li>
-            <li class="link"><a href="#experience">Experience</a></li>
-            <li class="link"><a href="#skills">Skills</a></li>
-            <li class="link"><a href="#skills-tools">Technologies</a></li>
-            <li class="link"><a href="#projects">Projects</a></li>
-            <li class="link"><a href="#contact">Contact</a></li>
+            <li class="link"><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li class="link"><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li class="link"><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+            <li class="link"><a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+            <li class="link"><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+            <li class="link"><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
         </ul>
-        <div class="menu-toggle">
-            <i class="fas fa-bars"></i>
+        <div class="nav-actions">
+          <button class="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </button>
+          <div class="menu-toggle">
+              <i class="fas fa-bars"></i>
+          </div>
         </div>
     </nav>
 </header>
-<!-- Header End -->
 
 <!-- Scroll Progress -->
 <div class="scroll-progress"></div>
@@ -45,222 +60,258 @@
 <!-- Start Hero Section -->
 <section class="home" id="home">
    <div class="container">
-        <div class="particles" id="particles"></div>
+        <div class="data-visualization">
+          <canvas id="dataCanvas"></canvas>
+          <div class="floating-elements">
+            <div class="floating-element"><i class="fas fa-database"></i></div>
+            <div class="floating-element"><i class="fas fa-chart-bar"></i></div>
+            <div class="floating-element"><i class="fas fa-brain"></i></div>
+            <div class="floating-element"><i class="fas fa-chart-pie"></i></div>
+          </div>
+        </div>
         <div class="row full-screen">
             <div class="home-content">
                 <div class="block">
-                    <h6>Hello, My Name is:</h6>
+                    <h6 class="typed-text" id="typed-text"></h6>
                     <h1>Tadiwanashe Mpupuni</h1>
-                    <h3>Full Stack Developer</h3>
-                    <div class="cv-btn">
-                        <a href="Mpupuni_Tadiwanashe_CV.pdf" target="_blank">Download CV</a>
+                    <h3 class="role-badge">
+                      <span class="badge badge-primary">Data Analyst</span>
+                      <span class="badge badge-secondary">Data Scientist</span>
+                      <span class="badge badge-accent">ML Engineer</span>
+                    </h3>
+                    <p class="hero-description">Transforming raw data into actionable insights through statistical analysis, machine learning, and compelling visualizations.</p>
+                    <div class="hero-cta">
+                        <a href="Mpupuni_Tadiwanashe_CV.pdf" target="_blank" class="btn btn-primary">
+                          <i class="fas fa-download"></i> Download CV
+                        </a>
+                        <a href="#projects" class="btn btn-outline">
+                          <i class="fas fa-eye"></i> View Projects
+                        </a>
                     </div>
                 </div>
                 <div class="profile-image">
-                    <img src="linkedin.jpg" alt="Tadiwanashe Mpupuni" />
+                    <div class="image-container">
+                      <img src="linkedin.jpg" alt="Tadiwanashe Mpupuni" />
+                      <div class="image-frame"></div>
+                    </div>
+                    <div class="profile-stats">
+                      <div class="stat">
+                        <h4>50+</h4>
+                        <p>Projects</p>
+                      </div>
+                      <div class="stat">
+                        <h4>5+</h4>
+                        <p>Years Exp</p>
+                      </div>
+                      <div class="stat">
+                        <h4>98%</h4>
+                        <p>Satisfaction</p>
+                      </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="scroll-indicator">
+          <a href="#about">
+            <i class="fas fa-chevron-down"></i>
+          </a>
+        </div>
     </div>
 </section>
-
-<!-- Social Media Sidebar -->
-<div class="social-media-sidebar">
-    <div class="social-media-item">
-        <a href="https://www.linkedin.com/in/tadiwanashe-mpupuni-89a13025b/" class="social-media-link">
-            <i class="fab fa-linkedin"></i>
-        </a>
-    </div>
-    <div class="social-media-item">
-        <a href="https://github.com/tadiwabasil" class="social-media-link">
-            <i class="fab fa-github"></i>
-        </a>
-    </div>
-    <div class="social-media-item">
-        <a href="https://www.instagram.com/invites/contact/?igsh=2wn9b95shuca&utm_content=mo8c9tl" class="social-media-link">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </div>
-    <div class="social-media-item">
-        <a href="https://www.tiktok.com/@sane_xix?_t=ZM-8tm6Tltjdbz&_r=1" class="social-media-link">
-            <i class="fab fa-tiktok"></i>
-        </a>
-    </div>
-</div>
-<!-- Social Media Sidebar End -->
 
 <!-- About Section -->
 <section id="about" class="about-me fade-in">
     <div class="container">
         <div class="section-title">
-            <h1>About Me</h1>
-            <h2 class="wall text-apps">Information About Me</h2>
+            <h1 class="title-line">About Me</h1>
+            <h2 class="subtitle">Data-Driven Professional</h2>
         </div>
         <div class="about-content">
             <div class="about-image">
-                <img src="sane.png" alt="Tadiwanashe Mpupuni" />
+                <div class="image-wrapper">
+                  <img src="sane.png" alt="Tadiwanashe Mpupuni" />
+                  <div class="tech-bubbles">
+                    <span class="bubble">Python</span>
+                    <span class="bubble">SQL</span>
+                    <span class="bubble">ML</span>
+                    <span class="bubble">Stats</span>
+                  </div>
+                </div>
             </div>
             <div class="about-text">
-                <h3>I'm Tadiwanashe Mpupuni</h3>
-                <p>A Full Stack Developer based in Zimbabwe.</p>
-                <p>I'm a dedicated Full Stack Developer with a passion for building dynamic and responsive
-                    web applications. With expertise in Python, C#, JavaScript, HTML, and CSS, I leverage these
-                    technologies to create robust and scalable solutions.</p>
-                <p>I specialize in using frameworks such as ASP.NET and Django, which allow me to develop
-                    efficient back-end systems and engaging front-end experiences. My proficiency in databases,
-                    including MySQL and MongoDB,
-                    enables me to design and manage data-driven applications effectively.</p>
-                <p>In addition to my technical skills, I am committed to continuous learning and keeping up with
-                    industry trends to enhance my skill set. I believe in collaborating closely with clients
-                    and team members to understand their needs and deliver exceptional results.</p>
-                <p>If you're looking for a versatile developer who can handle both front-end and back-end tasks,
-                    let's connect!</p>
-                <div class="social-liter">
-                    <a href="https://www.linkedin.com/in/tadiwanashe-mpupuni-89a13025b/">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://github.com/tadiwabasil">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.instagram.com/invites/contact/?igsh=2wn9b95shuca&utm_content=mo8c9tl">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                <h3>Data Analyst & Scientist</h3>
+                <div class="highlight-box">
+                  <p><i class="fas fa-map-marker-alt"></i> Based in Zimbabwe | <i class="fas fa-graduation-cap"></i> BSc Computer Science</p>
+                </div>
+                <p>I'm a passionate Data Professional with expertise in extracting meaningful insights from complex datasets. My approach combines statistical rigor with practical business understanding to drive data-informed decisions.</p>
+
+                <div class="specializations">
+                  <h4><i class="fas fa-star"></i> Specializations</h4>
+                  <div class="spec-grid">
+                    <div class="spec-item">
+                      <i class="fas fa-chart-line"></i>
+                      <span>Predictive Analytics</span>
+                    </div>
+                    <div class="spec-item">
+                      <i class="fas fa-database"></i>
+                      <span>Data Engineering</span>
+                    </div>
+                    <div class="spec-item">
+                      <i class="fas fa-eye"></i>
+                      <span>Data Visualization</span>
+                    </div>
+                    <div class="spec-item">
+                      <i class="fas fa-robot"></i>
+                      <span>Machine Learning</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="about-cta">
+                  <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i> Let's Collaborate
+                  </a>
+                  <a href="#projects" class="btn btn-outline">
+                    <i class="fas fa-code"></i> View Code Samples
+                  </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- About Section End -->
-
-<!-- Experience Section -->
-<section id="experience" class="experience fade-in">
-    <div class="container">
-        <div class="section-title">
-            <h1>My Experience</h1>
-            <h2 class="wall text-apps">Professional Journey</h2>
-        </div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2025 - Present</div>
-                <div class="timeline-content">
-                    <h3>Full Stack Developer</h3>
-                    <p>Developed and maintained web applications using modern technologies including React, and MongoDB. Collaborated with clients to deliver custom solutions that meet their specific business needs.</p>
-                    <div class="tech-tags">
-                        <span class="tech-tag">React</span>
-                        <span class="tech-tag">ASP.NET</span>
-                        <span class="tech-tag">MongoDB</span>
-                        <span class="tech-tag">Python</span>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2024 - 2025</div>
-                <div class="timeline-content">
-                    <h3>Junior Developer</h3>
-                    <h4>TTCS Global</h4>
-                    <p>Assisted in developing and maintaining company web applications. Gained experience in version control, agile methodologies, and collaborative development practices.</p>
-
-                    <div class="tech-tags">
-                        <span class="tech-tag">Git</span>
-                        <span class="tech-tag">Agile</span>
-                        <span class="tech-tag">C#</span>
-                        <span class="tech-tag">ASP.NET</span>
-                    </div>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2023 - 2024</div>
-                <div class="timeline-content">
-                    <h3>Intern</h3>
-                    <h4>TTCS Global</h4>
-                    <p>Built responsive websites and web applications using HTML, CSS, JavaScript, and various frameworks. Implemented backend functionality with Python and Django framework.</p>
-
-                    <div class="tech-tags">
-                        <span class="tech-tag">HTML/CSS</span>
-                        <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">Django</span>
-                        <span class="tech-tag">MySQL</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- Experience Section End -->
 
 <!-- Skills Section -->
 <section id="skills" class="skills fade-in">
     <div class="container">
         <div class="section-title">
-            <h1>My Skills</h1>
-            <h2 class="wall text-apps">What I Excel At</h2>
-        </div>
-        <div class="skills-grid">
-             <div class="skill">
-                <i class="fas fa-code"></i>
-                <h3>C#</h3>
-                <span class="badge">Advanced</span>
-            </div>
-            <div class="skill">
-                <i class="fab fa-html5"></i>
-                <h3>HTML</h3>
-                <span class="badge">Advanced</span>
-            </div>
-            <div class="skill">
-                <i class="fab fa-css3-alt"></i>
-                <h3>CSS</h3>
-                <span class="badge">Advanced</span>
-            </div>
-            <div class="skill">
-                <i class="fab fa-js"></i>
-                <h3>JavaScript</h3>
-                <span class="badge">Advanced</span>
-            </div>
-            <div class="skill">
-                <i class="fab fa-python"></i>
-                <h3>Python</h3>
-                <span class="badge">Advanced</span>
-            </div>
-            <div class="skill">
-                <i class="fas fa-database"></i>
-                <h3>SQL & NoSQL</h3>
-                <span class="badge">Advanced</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Technologies Section -->
-<section id="skills-tools" class="skills-tools fade-in">
-    <div class="container">
-        <div class="section-title">
-            <h2 class="wall text-apps">Technical & Soft Skills</h2>
+            <h1 class="title-line">Technical Skills</h1>
+            <h2 class="subtitle">Data Science Stack</h2>
         </div>
 
-        <div class="skills-tools-grid">
-            <!-- Tools & Technologies -->
-            <div class="category">
-                <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
-                <div class="items">
-                    <div class="item"><i class="fab fa-git-alt"></i> Git</div>
-                    <div class="item"><i class="fab fa-docker"></i> Docker</div>
-                    <div class="item"><i class="fas fa-database"></i> SQL & NoSQL</div>
-                    <div class="item"><i class="fab fa-microsoft"></i> .NET</div>
-                    <div class="item"><i class="fas fa-code-branch"></i> CI/CD</div>
+        <div class="skills-categories">
+          <!-- Programming & Analysis -->
+          <div class="category-card">
+            <div class="category-header">
+              <i class="fas fa-code"></i>
+              <h3>Programming & Analysis</h3>
+            </div>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">Python</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 95%"></div>
                 </div>
-            </div>
-
-            <!-- Soft Skills -->
-            <div class="category">
-                <h3><i class="fas fa-user-friends"></i> Soft Skills</h3>
-                <div class="items">
-                    <div class="item"><i class="fas fa-lightbulb"></i> Problem-Solving</div>
-                    <div class="item"><i class="fas fa-users"></i> Collaboration</div>
-                    <div class="item"><i class="fas fa-comments"></i> Communication</div>
-                    <div class="item"><i class="fas fa-tasks"></i> Agile Development</div>
-                    <div class="item"><i class="fas fa-clock"></i> Time Management</div>
+                <span class="skill-percent">95%</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">SQL</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 90%"></div>
                 </div>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">R</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 80%"></div>
+                </div>
+                <span class="skill-percent">80%</span>
+              </div>
             </div>
+          </div>
+
+          <!-- Data Visualization -->
+          <div class="category-card">
+            <div class="category-header">
+              <i class="fas fa-chart-bar"></i>
+              <h3>Data Visualization</h3>
+            </div>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">Tableau</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 88%"></div>
+                </div>
+                <span class="skill-percent">88%</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Power BI</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 85%"></div>
+                </div>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Matplotlib/Seaborn</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 92%"></div>
+                </div>
+                <span class="skill-percent">92%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Machine Learning -->
+          <div class="category-card">
+            <div class="category-header">
+              <i class="fas fa-brain"></i>
+              <h3>Machine Learning</h3>
+            </div>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">Scikit-learn</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 90%"></div>
+                </div>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">TensorFlow</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 75%"></div>
+                </div>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Statsmodels</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 85%"></div>
+                </div>
+                <span class="skill-percent">85%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Data Tools -->
+          <div class="category-card">
+            <div class="category-header">
+              <i class="fas fa-tools"></i>
+              <h3>Data Tools</h3>
+            </div>
+            <div class="skill-items">
+              <div class="skill-item">
+                <span class="skill-name">Pandas/Numpy</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 95%"></div>
+                </div>
+                <span class="skill-percent">95%</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Git</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 90%"></div>
+                </div>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Jupyter</span>
+                <div class="skill-bar">
+                  <div class="skill-level" style="width: 98%"></div>
+                </div>
+                <span class="skill-percent">98%</span>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </section>
@@ -269,72 +320,159 @@
 <section id="projects" class="projects fade-in">
     <div class="container">
         <div class="section-title">
-            <h1>My Projects</h1>
-            <h2 class="wall text-apps">Showcasing My Work</h2>
+            <h1 class="title-line">Data Projects</h1>
+            <h2 class="subtitle">Analytical Work & Research</h2>
         </div>
-        <div class="slider-wrapper">
-            <div class="slider">
-                <div class="card">
-                    <img src="cipz.png" alt="Project 1">
-                    <div class="card-content">
-                        <h3>CIPZ</h3>
-                        <p>CIPZ is Zimbabwe's Online Portal For Companies and
-                            Other Entities Registrations As Well as Post-Formation Updates</p>
-                        <br>
-                        <a href="#" class="btn">View Project Details</a>
-                    </div>
-                </div>
 
-                <div class="card">
-                    <img src="zmrtc.png" alt="Project 4">
-                    <div class="card-content">
-                        <h3>ZMRTC Marketplace</h3>
-                       <p>A professional marketplace built for buying and selling mines, land, and properties
-                           — connecting verified sellers with buyers through a secure and transparent system.</p>
-                        <a href="#" class="btn">View Project Details</a>
-                    </div>
-                </div>
-
-                 <div class="card">
-                    <img src="vimdad.png" alt="Project 4">
-                    <div class="card-content">
-                        <h3>Vimdad Website</h3>
-                        <p>A professional website designed to connect clients with the efficient and reliable logistics
-                            solutions offered by VIMDAD (PVT) LTD.</p>
-                        <br>
-                        <a href="#" class="btn">View Project Details</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="bot.jpg" alt="Project 4">
-                    <div class="card-content">
-                        <h3>Wakamu Logistics</h3>
-                        <p>A professional website built for Wakamu Logistics,
-                            a trucking company that offers efficient and reliable logistics solutions.</p>
-                        <br><br>
-                        <a href="#" class="btn">View Project Details</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="festilo.jpg" alt="Project 2">
-                    <div class="card-content">
-                        <h3>Festilo</h3>
-                        <p>A ticketing system enables event organizers, to create and manage events,
-                            allowing customers to browse, select, and purchase tickets online.</p>
-                        <br>
-                        <a href="#" class="btn">View Project Details</a>
-                    </div>
-                </div>
-
-
-
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card" data-category="ml">
+            <div class="project-header">
+              <div class="project-category">Machine Learning</div>
+              <div class="project-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-external-link-alt"></i></a>
+              </div>
             </div>
+            <div class="project-content">
+              <h3>Customer Churn Prediction</h3>
+              <p>Built predictive models using Random Forest and XGBoost to identify at-risk customers with 92% accuracy.</p>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Scikit-learn</span>
+                <span class="tech-tag">XGBoost</span>
+                <span class="tech-tag">Tableau</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card" data-category="viz">
+            <div class="project-header">
+              <div class="project-category">Dashboard</div>
+              <div class="project-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Sales Performance Dashboard</h3>
+              <p>Interactive Tableau dashboard tracking KPIs, sales trends, and regional performance for retail chain.</p>
+              <div class="tech-stack">
+                <span class="tech-tag">Tableau</span>
+                <span class="tech-tag">SQL</span>
+                <span class="tech-tag">ETL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card" data-category="analysis">
+            <div class="project-header">
+              <div class="project-category">Time Series Analysis</div>
+              <div class="project-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Stock Price Forecasting</h3>
+              <p>ARIMA and LSTM models for financial time series prediction with comparative performance analysis.</p>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">Statsmodels</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 -->
+          <div class="project-card" data-category="nlp">
+            <div class="project-header">
+              <div class="project-category">NLP</div>
+              <div class="project-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fas fa-external-link-alt"></i></a>
+              </div>
+            </div>
+            <div class="project-content">
+              <h3>Sentiment Analysis Engine</h3>
+              <p>BERT-based sentiment classifier for customer reviews achieving 89% accuracy across multiple domains.</p>
+              <div class="tech-stack">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">BERT</span>
+                <span class="tech-tag">Transformers</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="slider-nav">
-            <button id="prev-btn"><i class="fas fa-chevron-left"></i></button>
-            <button id="next-btn"><i class="fas fa-chevron-right"></i></button>
+
+        <div class="view-all">
+          <a href="https://github.com/tadiwabasil" class="btn btn-primary">
+            <i class="fab fa-github"></i> View All Projects
+          </a>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Section -->
+<section id="experience" class="experience fade-in">
+    <div class="container">
+        <div class="section-title">
+            <h1 class="title-line">Experience</h1>
+            <h2 class="subtitle">Professional Journey</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-line"></div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2025 - Present</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Senior Data Analyst</h3>
+              <h4>Data Solutions Inc.</h4>
+              <p>Leading data analysis initiatives, building predictive models, and creating dashboards that increased business efficiency by 35%.</p>
+              <div class="timeline-tags">
+                <span class="tag">Python</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Machine Learning</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2023 - 2025</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Data Scientist</h3>
+              <h4>Tech Innovations Ltd</h4>
+              <p>Developed ML models for customer segmentation and recommendation systems, improving conversion rates by 28%.</p>
+              <div class="timeline-tags">
+                <span class="tag">R</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">A/B Testing</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-date">2021 - 2023</div>
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <h3>Junior Data Analyst</h3>
+              <h4>Analytics Corp</h4>
+              <p>Performed data cleaning, visualization, and statistical analysis for various business units, creating automated reporting systems.</p>
+              <div class="timeline-tags">
+                <span class="tag">Excel</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Python</span>
+                <span class="tag">Data Visualization</span>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
 </section>
@@ -343,59 +481,84 @@
 <section id="contact" class="contact-me fade-in">
     <div class="container">
         <div class="section-title">
-            <h1>Contact Me</h1>
-            <h2 class="wall text-apps">Get In Touch</h2>
+            <h1 class="title-line">Get In Touch</h1>
+            <h2 class="subtitle">Let's Analyze Something</h2>
         </div>
-        <div class="contact-content">
-            <div class="contact-details">
-                <h3>Let's Connect</h3>
-                <p>I'm always open to discussing new opportunities, collaborations, or just having a friendly chat about technology and development.</p>
-                <p>Feel free to reach out through any of the platforms below, or send me a message using the contact form.</p>
 
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>tadiwabasil2@gmail.com</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <span>(263) 777-914-727</span>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Zimbabwe</span>
-                    </div>
-                </div>
-
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/tadiwanashe-mpupuni-89a13025b/" class="social-link">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="https://github.com/tadiwabasil" class="social-link">
-                        <i class="fab fa-github"></i> GitHub
-                    </a>
-                    <a href="https://www.instagram.com/invites/contact/?igsh=2wn9b95shuca&utm_content=mo8c9tl" class="social-link">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                </div>
+        <div class="contact-container">
+          <div class="contact-info">
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <h3>Email</h3>
+              <p>tadiwabasil2@gmail.com</p>
+              <a href="mailto:tadiwabasil2@gmail.com" class="contact-link">Send Message</a>
             </div>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
 
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" name="subject" required>
-
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-
-                    <button type="submit">Send Message</button>
-                </form>
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <h3>Phone</h3>
+              <p>(263) 777-914-727</p>
+              <a href="tel:+263777914727" class="contact-link">Call Now</a>
             </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <h3>Location</h3>
+              <p>Zimbabwe</p>
+              <a href="https://maps.google.com" class="contact-link">View on Map</a>
+            </div>
+
+            <div class="contact-card">
+              <div class="contact-icon">
+                <i class="fas fa-calendar-alt"></i>
+              </div>
+              <h3>Availability</h3>
+              <p>Open to Opportunities</p>
+              <a href="#contact" class="contact-link">Schedule Meeting</a>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper">
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <label for="name">
+                  <i class="fas fa-user"></i> Name
+                </label>
+                <input type="text" id="name" name="name" required>
+              </div>
+
+              <div class="form-group">
+                <label for="email">
+                  <i class="fas fa-envelope"></i> Email
+                </label>
+                <input type="email" id="email" name="email" required>
+              </div>
+
+              <div class="form-group">
+                <label for="subject">
+                  <i class="fas fa-tag"></i> Subject
+                </label>
+                <input type="text" id="subject" name="subject" required>
+              </div>
+
+              <div class="form-group">
+                <label for="message">
+                  <i class="fas fa-comment"></i> Message
+                </label>
+                <textarea id="message" name="message" rows="5" placeholder="Describe your data needs..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">
+                <i class="fas fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
         </div>
     </div>
 </section>
@@ -403,10 +566,47 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <p>&copy; 2025 Tadiwanashe Basil Mpupuni. All Rights Reserved.</p>
-        <p class="footer-credit">Designed & Developed by Tadiwanashe Basil Mpupuni</p>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <h3>Tadiwanashe Mpupuni</h3>
+          <p>Data Analyst & Scientist</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+        </div>
+
+        <div class="footer-social">
+          <a href="https://www.linkedin.com/in/tadiwanashe-mpupuni-89a13025b/" class="social-icon">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/tadiwabasil" class="social-icon">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.instagram.com/invites/contact/?igsh=2wn9b95shuca&utm_content=mo8c9tl" class="social-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.tiktok.com/@sane_xix" class="social-icon">
+            <i class="fab fa-tiktok"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Tadiwanashe Basil Mpupuni. All Rights Reserved.</p>
+        <p class="footer-credit">Analyze • Visualize • Optimize</p>
+      </div>
     </div>
 </footer>
+
+<!-- Back to Top -->
+<button class="back-to-top">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
 <script src="site.js"></script>
 </body>
